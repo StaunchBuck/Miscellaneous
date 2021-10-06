@@ -1,9 +1,11 @@
 package com.techstudy.misc.collection;
 
-import java.util.Collection;
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.function.Predicate;
 
 public class JavaSorting {
 
@@ -18,7 +20,23 @@ public class JavaSorting {
 	l.add(5);
 	
 	System.out.println(l);
+	//sample predicate
+	Predicate<Integer> p = (a) -> a>=20; 
+	Predicate<Integer> p1 = (a) -> a%2 == 0; 
+	System.out.println(p.test(20));
+	System.out.println(p.negate().test(20));
+	System.out.println(p.or(p1).test(10));
+	System.out.println(p.and(p1).test(10));
+	Integer[][] ints = { { 1, 2, 3 }, { null }, { 7, 8, 9 } };
+	System.out.println(ints[1][0]);
 	
+	List<Integer> integers = Arrays.asList(3, 9, 7, 0, 10, 20);
+	integers.forEach(i -> {
+	    if (i == 0) {
+	        throw new IllegalArgumentException("Zero not allowed");
+	    }
+	    System.out.println(Math.PI / i);
+	});
 	}
 }
 
