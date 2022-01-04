@@ -1,6 +1,7 @@
 package com.techstudy.misc.collection;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
@@ -31,12 +32,17 @@ public class JavaSorting {
 	System.out.println(ints[1][0]);
 	
 	List<Integer> integers = Arrays.asList(3, 9, 7, 0, 10, 20);
-	integers.forEach(i -> {
-	    if (i == 0) {
-	        throw new IllegalArgumentException("Zero not allowed");
-	    }
-	    System.out.println(Math.PI / i);
-	});
+//	integers.forEach(i -> {
+//	    if (i == 0) {
+//	        throw new IllegalArgumentException("Zero not allowed");
+//	    }
+//	    System.out.println(Math.PI / i);
+//	});
+	
+	Collections.sort(integers,new MyComparator());
+	System.out.println(integers);
+	Collections.sort(integers,new MyComparator1());
+	System.out.println(integers);
 	}
 }
 
@@ -47,13 +53,25 @@ public class JavaSorting {
 //returns +ve iff obj1 has to come after obj2
 //returns 0 iff obj1 and obj2 are equal
 
-class MyComparator implements Comparator<Integer>{ //descending
+class MyComparator implements Comparator<Integer>{ //ascending
 
 	@Override
 	public int compare(Integer o1, Integer o2) {
 		
 		if(o1<o2) return -1;
 		else if (o1>o2) return 1;
+		else return 0;
+	}
+	
+}
+
+class MyComparator1 implements Comparator<Integer>{ //descending
+
+	@Override
+	public int compare(Integer o1, Integer o2) {
+		
+		if(o1>o2) return -1;
+		else if (o1<o2) return 1;
 		else return 0;
 	}
 	
